@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Machenical Keyboard"
+title:  "Craft Your Own Magical 3D-Printed Machanical Keyboard 🪄"
 date:   2024-04-30 12:01:36 +0530
 categories: Arduino
 
@@ -10,8 +10,6 @@ categories: Arduino
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/n7pIiyVHTEE/0.jpg)](https://www.youtube.com/watch?v=n7pIiyVHTEE)
 ---
 
-Unleash Your Creativity: Craft Your Own Magical 3D-Printed Keyboard 🪄
-======================================================================
 
 Step 1: Designing Your Keyboard in Onshape 🖥️
 ----------------------------------------------
