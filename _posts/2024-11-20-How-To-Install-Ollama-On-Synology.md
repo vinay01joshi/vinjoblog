@@ -5,15 +5,41 @@ date:   2024-11-20 03:18:36 +0530
 categories: Synology
 
 ---
+
+## Introduction
 This blogs is showing how you can install ollama web and server on your Synology nas with in docker container, I am using [Portainer](https://www.portainer.io/)
 to create stack copy and paste this on your portainer stack editor and deploy new stack as ollama.
 
-## Folder Creation
+## PreRequisite
 Create 3 folder with in the docker folder 
 - data
 - entirypoint
 - webui
 
+create `entrypoint.sh` file to bootstrap `ollama` server with in docker hence save this file on `/volume1/docker/ollama/enttrypoint` folder.
+```
+#!/bin/bash
+
+# Starting server
+echo "Starting server"
+ollama serve &
+sleep 1
+
+# Splitting the models by comma and pulling each
+IFS=',' read -ra MODELS <<< "$model"
+for m in "${MODELS[@]}"; do
+    echo "Pulling $m"
+    ollama pull "$m"
+    sleep 5
+    # echo "Running $m"
+    # ollama run "$m"
+    # No need to sleep here unless you want to give some delay between each pull for some reason
+done
+
+# Keep the script running to prevent the container from exiting
+wait
+```
+    
 
 ## Stack File
 ```
@@ -61,30 +87,8 @@ services:
 
 ```
 
-entrypoint.sh file to bootstrap `ollama` server with in docker hence save this file on `/volume1/docker/ollama/enttrypoint` folder.
-```
-#!/bin/bash
 
-# Starting server
-echo "Starting server"
-ollama serve &
-sleep 1
 
-# Splitting the models by comma and pulling each
-IFS=',' read -ra MODELS <<< "$model"
-for m in "${MODELS[@]}"; do
-    echo "Pulling $m"
-    ollama pull "$m"
-    sleep 5
-    # echo "Running $m"
-    # ollama run "$m"
-    # No need to sleep here unless you want to give some delay between each pull for some reason
-done
-
-# Keep the script running to prevent the container from exiting
-wait
-```
-    
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcxMjQxNjYwMCwtNjIxMDE4MDkwXX0=
+eyJoaXN0b3J5IjpbNzIyNzczNjQ5LC02MjEwMTgwOTBdfQ==
 -->
