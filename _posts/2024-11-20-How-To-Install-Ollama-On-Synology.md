@@ -5,7 +5,8 @@ date:   2024-11-20 03:18:36 +0530
 categories: Synology
 
 ---
-This blogs is showing how you can install ollama web and server on your Synology nas with in docker container ,
+This blogs is showing how you can install ollama web and server on your Synology nas with in docker container, I am using [Portainer]()
+to create stack copy and paste this on your portainer stack editor and deploy new stack as ollama.
 
 
 
@@ -75,5 +76,5 @@ wait
 ```
     
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUzMzU4NzAxN119
+eyJoaXN0b3J5IjpbLTYyMTAxODA5MF19
 -->
