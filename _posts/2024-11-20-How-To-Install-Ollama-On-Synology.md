@@ -1,7 +1,10 @@
+---
+layout: post
+title:  "How to install Ollama on Synology NAS"
+date:   2024-11-20 03:18:36 +0530
+categories: Synology
 
-
-
-> Written with [StackEdit](https://stackedit.io/).
+---
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzMwOTk4MTE2XX0=
+eyJoaXN0b3J5IjpbNDkwODkzNzddfQ==
 -->
