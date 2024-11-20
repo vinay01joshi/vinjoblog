@@ -11,42 +11,46 @@ to create stack copy and paste this on your portainer stack editor and deploy ne
 
 
 ```
-version: "3.9"
 services:
-  api:
-    image: ghcr.io/getumbrel/llama-gpt-api:latest
-    container_name: LlamaGPT-api
-    hostname: llamagpt-api
-    mem_limit: 8g
-    cpu_shares: 768
-    security_opt:
-      - no-new-privileges:true
+  webui:
+    container_name: OLLAMA-WEBUI
+    image: ghcr.io/open-webui/open-webui:0.3
+    volumes:
+      - /volume1/docker/ollama/webui:/app/backend/data:rw
     environment:
-      MODEL: /models/llama-2-7b-chat.bin
-      MODEL_DOWNLOAD_URL: https://huggingface.co/TheBloke/Nous-Hermes-Llama-2-7B-GGML/resolve/main/nous-hermes-llama-2-7b.ggmlv3.q4_0.bin
-      USE_MLOCK: 1
-    cap_add:
-      - IPC_LOCK
-    restart: on-failure:5
-
-  front:
-    image: ghcr.io/getumbrel/llama-gpt-ui:latest
-    container_name: LlamaGPT
-    hostname: llamagpt
-    mem_limit: 1g
-    cpu_shares: 768
-    security_opt:
-      - no-new-privileges:true
+      OLLAMA_BASE_URL: http://ollama:11434
     healthcheck:
-      test: wget --no-verbose --tries=1 --spider http://localhost:3000
+      test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/8080' || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 90s
     ports:
-      - 3136:3000
+      - 8271:8080
+    restart: on-failure
+    depends_on:
+      ollama:
+        condition: service_healthy
+
+  ollama:
+    container_name: OLLAMA
+    image: ollama/ollama:latest #For a NAS with an AMD CPU, use the following image ollama/ollama:rocm instead of ollama/ollama:latest
+    entrypoint: ["/usr/bin/bash", "/entrypoint.sh"]
+    volumes:
+      - /volume1/docker/ollama/data:/root/.ollama:rw
+      - /volume1/docker/ollama/entrypoint/entrypoint.sh:/entrypoint.sh
     environment:
-     - 'OPENAI_API_KEY=sk-XXXXXXXXXXXXXXXXXXXX'
-     - 'OPENAI_API_HOST=http://llamagpt-api:8000'
-     - 'DEFAULT_MODEL=/models/llama-2-7b-chat.bin'
-     - 'WAIT_HOSTS=llamagpt-api:8000'
-     - 'WAIT_TIMEOUT=600'
+      MODELS: llama3.2 #Check all the models at the following link https://ollama.com/library - You can separate models by commas like llama3.2,gemma2,mistral
+      OLLAMA_INSTALL_MODELS: llama3.2 #Check all the models at the following link https://ollama.com/library - You can separate models by commas like llama3.2,gemma2,mistral
+      OLLAMA_HOSTNAME: ollama.yourname.synology.me  # optionaly you can give yourdrive.local:<port>
+    ports:
+      - 11434:11434
+    healthcheck:
+      test: ["CMD", "ollama", "--version"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
     restart: on-failure:5
 
 ```
@@ -76,5 +80,5 @@ wait
 ```
     
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYyMTAxODA5MF19
+eyJoaXN0b3J5IjpbMTg1OTU3Mjc5MywtNjIxMDE4MDkwXX0=
 -->
