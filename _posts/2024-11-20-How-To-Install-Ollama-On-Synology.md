@@ -15,7 +15,7 @@ Create 3 folder with in the docker folder
 - data
 - entirypoint
 - webui
-
+ 
 create `entrypoint.sh` file to bootstrap `ollama` server with in docker hence save this file on `/volume1/docker/ollama/enttrypoint` folder.
 ```
 #!/bin/bash
@@ -100,7 +100,7 @@ curl http://localhost:11434/api/generate -d '{
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgwMjk2OTQ0NSwtMjAwMzkwOTgsMjA1MT
-Q4NDA3LDE4MDI5Njk0NDUsNzIyNzczNjQ5LC02MjEwMTgwOTBd
-fQ==
+eyJoaXN0b3J5IjpbLTU1MjYwODAzOSwxODAyOTY5NDQ1LC0yMD
+AzOTA5OCwyMDUxNDg0MDcsMTgwMjk2OTQ0NSw3MjI3NzM2NDks
+LTYyMTAxODA5MF19
 -->
