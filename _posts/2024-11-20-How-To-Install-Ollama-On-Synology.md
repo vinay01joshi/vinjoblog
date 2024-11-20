@@ -90,10 +90,16 @@ services:
 
 ## Resources
 [Ollama document](https://github.com/ollama/ollama/blob/main/docs/api.md) how you can call api endpoint .
+```
+curl http://localhost:11434/api/generate -d '{
+ "model": "llama3.2",
+ "prompt": "Why is the sky blue?"
+}'
+```
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU1OTE1NTU3OSw3MjI3NzM2NDksLTYyMT
+eyJoaXN0b3J5IjpbMTgwMjk2OTQ0NSw3MjI3NzM2NDksLTYyMT
 AxODA5MF19
 -->
