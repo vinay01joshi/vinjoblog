@@ -14,7 +14,7 @@ to create stack copy and paste this on your portainer stack editor and deploy ne
 Create 3 folder with in the docker folder 
 - data
 - entirypoint
-- webui
+- webui   
  
 create `entrypoint.sh` file to bootstrap `ollama` server with in docker hence save this file on `/volume1/docker/ollama/enttrypoint` folder.
 ```
@@ -100,7 +100,7 @@ curl http://localhost:11434/api/generate -d '{
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU1MjYwODAzOSwxODAyOTY5NDQ1LC0yMD
+eyJoaXN0b3J5IjpbLTE0NzI2OTc1OSwxODAyOTY5NDQ1LC0yMD
 AzOTA5OCwyMDUxNDg0MDcsMTgwMjk2OTQ0NSw3MjI3NzM2NDks
 LTYyMTAxODA5MF19
 -->
