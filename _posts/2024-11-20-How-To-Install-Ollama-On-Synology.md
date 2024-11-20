@@ -5,7 +5,7 @@ date:   2024-11-20 03:18:36 +0530
 categories: Synology
 
 ---
-
+This blogs is showing how you can install ollama web and server on your Synology nas with in docker container ,
 
 
 
@@ -50,7 +50,7 @@ services:
 
 ```
 
-entrypoint.sh file to boostrap ollama server with in docker hence save this file on `/volume1/`
+entrypoint.sh file to bootstrap `ollama` server with in docker hence save this file on `/volume1/docker/ollama/enttrypoint` folder.
 ```
 #!/bin/bash
 
@@ -75,5 +75,5 @@ wait
 ```
     
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ5OTkzNzY0MV19
+eyJoaXN0b3J5IjpbLTUzMzU4NzAxN119
 -->
