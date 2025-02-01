@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "Create your own Motion Dector 🪄"
-date:   2024-04-30 12:01:36 +0530
-categories: Arduino
+title:  "Create your own Motion Detector full product using Raspberry pi PICO🪄"
+date:   2025-02-01 09:01
+categories: raspberryPi
 
 ---
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc2NDMyNTQyN119
+eyJoaXN0b3J5IjpbLTE3MTc3MDA5MjRdfQ==
 -->
