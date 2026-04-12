@@ -4,3 +4,16 @@
 
 @use "minima";
 @import "css/navbar";
+
+// Google Fonts
+$font-family-poppins: 'Poppins', sans-serif;
+$font-family-mono: 'Roboto Mono', monospace;
+
+// Apply fonts globally
+html, body {
+  font-family: $font-family-poppins;
+}
+
+code, pre, .highlight {
+  font-family: $font-family-mono;
+}
