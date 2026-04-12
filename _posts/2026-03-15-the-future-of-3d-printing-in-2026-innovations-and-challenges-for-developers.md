@@ -16,7 +16,7 @@ categories: ai development
 The materials used in 3D printing are evolving rapidly. Advanced polymer materials offer improved mechanical properties, chemical resistance, and thermal stability, enabling the creation of complex and high-performance parts. These innovations are redefining product design and manufacturing processes.
 
 
-![Banner Image](/images/banner_1773573219.png)
+![Banner Image](/content/images/shared/banner_1773573219.png)
 
 
 ### Technological Advancements in 3D Printing
@@ -28,7 +28,7 @@ The materials used in 3D printing are evolving rapidly. Advanced polymer materia
 Despite its promise, 3D printing faces several hurdles, including high costs, material limitations, workforce shortages, and post-processing challenges. Addressing these issues is crucial for widespread adoption.
 
 
-![Challenges in 3D Printing](/images/diagram_1773573219.png)
+![Challenges in 3D Printing](/content/images/shared/diagram_1773573219.png)
 
 
 ### Role of AI and Generative Design Tools

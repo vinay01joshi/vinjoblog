@@ -9,7 +9,7 @@ categories: ai development
 
 ---
 
-![Banner Image](/images/banner_1773564326.png)
+![Banner Image](/content/images/shared/banner_1773564326.png)
 
 ### The Future of Sustainability in 3D Printing: Innovations in Waste Reduction and High-Temperature Materials for 2026
 
@@ -77,7 +77,7 @@ Sustainability is critical as the 3D printing industry evolves. Innovations in w
 
 ---
 
-![Sustainable 3D Printing Workflow](/images/diagram_1773564326.png)
+![Sustainable 3D Printing Workflow](/content/images/shared/diagram_1773564326.png)
 
 ---
 

@@ -1,0 +1,52 @@
+<header class="navbar-header">
+  <nav class="navbar">
+    <!-- Left: Brand -->
+    <div class="navbar-brand">
+      <a href="{{ "/" | relative_url }}" class="brand-name">{{ site.title }}</a>
+    </div>
+
+    <!-- Center: Navigation Links -->
+    <ul class="navbar-menu">
+      <li><a href="{{ "/" | relative_url }}" class="nav-link {% if page.url == "/" %}active{% endif %}">Home</a></li>
+      <li><a href="{{ "/pages/videos/" | relative_url }}" class="nav-link {% if page.url contains "videos" %}active{% endif %}">Videos</a></li>
+      <li><a href="{{ "/archive/" | relative_url }}" class="nav-link {% if page.url contains "archive" %}active{% endif %}">Archive</a></li>
+    </ul>
+
+    <!-- Right: Utilities -->
+    <div class="navbar-utils">
+      <!-- Theme Toggle -->
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+
+      <!-- Search Bar -->
+      <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search posts..." aria-label="Search posts">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </div>
+
+      <!-- More Menu (Hamburger on mobile) -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,26 @@
+# Videos data file
+# Format: Add your YouTube videos here with the following fields:
+# - title: Video title
+# - youtube_id: The YouTube video ID (from the URL: youtube.com/watch?v=YOUTUBE_ID)
+# - date: Publication date (YYYY-MM-DD format)
+# - description: Brief description of the video
+# - category: Video category/topic (optional)
+
+- title: "Getting Started with AI Coding Assistants"
+  youtube_id: "dQw4w9WgXcQ"
+  date: 2026-03-15
+  description: "Learn how to leverage AI coding assistants like GitHub Copilot and other tools to boost your development productivity. In this video, we explore the top AI coding assistant tools available in 2026."
+  category: "AI & Development"
+
+- title: "3D Printing Innovations 2026"
+  youtube_id: "9bZkp7q19f0"
+  date: 2026-03-10
+  description: "A comprehensive look at the latest 3D printing technologies and innovations reshaping the manufacturing industry in 2026, including new materials and techniques."
+  category: "3D Printing"
+
+- title: "Building Your First AI Agent"
+  youtube_id: "jNQXAC9IVRw"
+  date: 2026-02-28
+  description: "Step-by-step guide to building your first AI agent using the Microsoft Agent Framework. Learn the fundamentals and best practices for autonomous agent development."
+  category: "AI & Development"
+# Add more videos below this line

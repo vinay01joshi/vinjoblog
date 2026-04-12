@@ -1,0 +1,53 @@
+---
+layout: default
+---
+
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="post-meta">
+      <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date: "%B %d, %Y" }}
+      </time>
+      {% if page.author %}
+      <span class="post-author">by {{ page.author }}</span>
+      {% endif %} {% if page.categories %}
+      <span class="post-categories">
+        {% for cat in page.categories %}
+        <span class="category-tag">{{ cat }}</span>
+        {% endfor %}
+      </span>
+      {% endif %}
+    </div>
+  </header>
+
+  <div class="post-content">{{ content }}</div>
+
+  {% if page.tags %}
+  <footer class="post-footer">
+    <div class="post-tags">
+      {% for tag in page.tags %}
+      <span class="tag">#{{ tag }}</span>
+      {% endfor %}
+    </div>
+  </footer>
+  {% endif %}
+</article>
+
+<!-- Related Posts -->
+<aside class="related-posts">
+  <h3>Related Posts</h3>
+  <ul>
+    {% assign current_post = page %} {% assign max_related = 3 %} {% assign
+    count = 0 %} {% for post in site.posts %} {% if post.url != current_post.url
+    %} {% assign match_count = 0 %} {% if post.categories ==
+    current_post.categories %} {% assign match_count = match_count | plus: 1 %}
+    {% endif %} {% if match_count > 0 %} {% if count < max_related %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+      <time>{{ post.date | date: "%Y-%m-%d" }}</time>
+    </li>
+    {% assign count = count | plus: 1 %} {% endif %} {% endif %} {% endif %} {%
+    endfor %}
+  </ul>
+</aside>

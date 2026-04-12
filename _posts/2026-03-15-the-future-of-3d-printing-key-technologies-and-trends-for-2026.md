@@ -29,7 +29,7 @@ This article aims to provide an in-depth analysis of the advancements in 3D prin
 #### AI-Driven Workflow Automation
 The integration of AI into 3D printing processes will significantly enhance efficiency and accuracy. AI can automate the design, printing, and post-processing stages, reducing human error and increasing throughput.
 
-![AI-Driven Workflow Automation in 3D Printing](./images/diagram_6901.png)
+![AI-Driven Workflow Automation in 3D Printing](./content/images/shared/diagram_6901.png)
 
 #### Industrial Additive Manufacturing Growth
 As additive manufacturing continues to mature, its role in optimizing production lines and expanding capabilities within industrial settings will become more pronounced. This growth will be driven by the need for greater flexibility and customization in manufacturing.

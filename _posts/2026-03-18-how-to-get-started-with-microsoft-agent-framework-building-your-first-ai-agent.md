@@ -37,6 +37,6 @@ categories: ai development
   - This course offers a structured learning path for new users.
   - Note prerequisites such as an Azure environment and compatibility with Linux systems.
 
-![Banner Image](/images/ComfyUI_00027_.png)
+![Banner Image](/content/images/shared/ComfyUI_00027_.png)
 
-![Diagram: AI Agent Development Workflow](/images/diagram-ai-agent-development-workflow.png)
+![Diagram: AI Agent Development Workflow](/content/images/shared/diagram-ai-agent-development-workflow.png)
