@@ -1,0 +1,155 @@
+---
+layout: default
+---
+
+{%- include hero.html -%}
+
+<div class="home" id="posts">
+  {%- if site.posts.size > 0 -%}
+    <div class="posts-wrapper">
+      <!-- Main Posts Area -->
+      <main class="posts-main">
+        <!-- Grid View (Default) -->
+        <div class="posts-grid" id="postsGrid">
+          <div class="grid-wrapper">
+            {%- for post in site.posts -%}
+            <article class="post-card grid-view">
+              {%- if post.image -%}
+              <div class="post-image">
+                <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy">
+              </div>
+              {%- endif -%}
+              <div class="post-content">
+                {%- if post.categories -%}
+                <div class="post-categories">
+                  {%- for category in post.categories -%}
+                  <span class="category-tag">{{ category }}</span>
+                  {%- endfor -%}
+                </div>
+                {%- endif -%}
+                <h3>
+                  <a class="post-link" href="{{ post.url | relative_url }}">
+                    {{ post.title | escape }}
+                  </a>
+                </h3>
+                {%- if site.show_excerpts -%}
+                <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+                {%- endif -%}
+                <div class="post-meta">
+                  {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+                  <span class="post-date">{{ post.date | date: date_format }}</span>
+                  <span class="read-time">5 min read</span>
+                </div>
+              </div>
+            </article>
+            {%- endfor -%}
+          </div>
+        </div>
+
+        <!-- List View -->
+        <div class="posts-list" id="postsList" style="display: none;">
+          <ul class="list-wrapper">
+            {%- for post in site.posts -%}
+            <li class="post-card list-view">
+              {%- if post.image -%}
+              <div class="post-thumbnail">
+                <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy">
+              </div>
+              {%- endif -%}
+              <div class="post-content-list">
+                {%- if post.categories -%}
+                <div class="post-categories">
+                  {%- for category in post.categories -%}
+                  <span class="category-tag">{{ category }}</span>
+                  {%- endfor -%}
+                </div>
+                {%- endif -%}
+                <h3>
+                  <a class="post-link" href="{{ post.url | relative_url }}">
+                    {{ post.title | escape }}
+                  </a>
+                </h3>
+                {%- if site.show_excerpts -%}
+                <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+                {%- endif -%}
+                <div class="post-meta">
+                  {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+                  <span class="post-date">{{ post.date | date: date_format }}</span>
+                </div>
+              </div>
+            </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+
+        <!-- Load More Button -->
+        <div class="load-more-container">
+          <button class="load-more-btn" id="loadMoreBtn">Load More</button>
+        </div>
+
+        <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
+      </main>
+
+      <!-- Right Sidebar -->
+      <aside class="posts-sidebar">
+        <!-- Newsletter Card -->
+        <div class="sidebar-card newsletter-card">
+          <h3>Stay inspired weekly 📬</h3>
+          <p>Every Sunday, I deliver actionable tips for enhancing productivity, practical life advice, and top-notch insights gathered from various sources, right to your email inbox.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email address..." required>
+            <button type="submit" class="newsletter-btn">Join Now</button>
+          </form>
+        </div>
+
+        <!-- Social Links -->
+        <div class="sidebar-card social-links">
+          <a href="#" aria-label="Twitter" title="Twitter">𝕏</a>
+          <a href="#" aria-label="Facebook" title="Facebook">f</a>
+          <a href="#" aria-label="Mastodon" title="Mastodon">🐘</a>
+          <a href="#" aria-label="Reddit" title="Reddit">r</a>
+          <a href="#" aria-label="GitHub" title="GitHub">⚙</a>
+          <a href="#" aria-label="RSS" title="RSS">≡</a>
+        </div>
+
+        <!-- Featured Posts -->
+        <div class="sidebar-card featured-posts">
+          <h3>Featured posts</h3>
+          <div class="featured-list">
+            {%- assign featured = site.posts | where: "featured", true | first -%}
+            {%- if featured -%}
+            <article class="featured-item">
+              {%- if featured.image -%}
+              <img src="{{ featured.image | relative_url }}" alt="{{ featured.title }}" loading="lazy">
+              {%- endif -%}
+              <h4>
+                <a href="{{ featured.url | relative_url }}">{{ featured.title | escape }}</a>
+              </h4>
+              {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+              <span class="featured-date">{{ featured.date | date: date_format }}</span>
+            </article>
+            {%- endif -%}
+          </div>
+        </div>
+
+        <!-- Topics Tags -->
+        <div class="sidebar-card topics">
+          <h3>Topics</h3>
+          <div class="topics-list">
+            {%- assign all_tags = "" | split: "," -%}
+            {%- for post in site.posts -%}
+              {%- for category in post.categories -%}
+                {%- assign all_tags = all_tags | push: category -%}
+              {%- endfor -%}
+            {%- endfor -%}
+            {%- assign unique_tags = all_tags | uniq | sort -%}
+            {%- for tag in unique_tags -%}
+            <span class="topic-tag">{{ tag }}</span>
+            {%- endfor -%}
+          </div>
+        </div>
+      </aside>
+    </div>
+  {%- endif -%}
+
+</div>

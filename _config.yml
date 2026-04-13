@@ -19,6 +19,8 @@
 # in the templates via {{ site.myvariable }}.
 
 title: vinjo
+author: Vinay
+tagline: Code, create, and scale — from enterprise systems to experimental tech.
 email: vinay01joshi@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this

@@ -15,6 +15,24 @@
 
     <!-- Right: Utilities -->
     <div class="navbar-utils">
+      <!-- View Toggle (Grid/List) -->
+      <button class="view-toggle" id="viewToggle" aria-label="Toggle between grid and list view" title="Toggle view">
+        <svg class="icon-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+        <svg class="icon-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="8" y1="6" x2="21" y2="6"></line>
+          <line x1="8" y1="12" x2="21" y2="12"></line>
+          <line x1="8" y1="18" x2="21" y2="18"></line>
+          <circle cx="3" cy="6" r="1.5"></circle>
+          <circle cx="3" cy="12" r="1.5"></circle>
+          <circle cx="3" cy="18" r="1.5"></circle>
+        </svg>
+      </button>
+
       <!-- Theme Toggle -->
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -34,7 +52,7 @@
       </button>
 
       <!-- Search Bar -->
-      <div class="search-container">
+      <div class="search-wrapper">
         <input type="text" id="searchInput" class="search-input" placeholder="Search posts..." aria-label="Search posts">
         <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="11" cy="11" r="8"></circle>
