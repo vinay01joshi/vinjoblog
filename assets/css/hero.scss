@@ -1,25 +1,22 @@
 // Hero Section Styles
 
 .hero-section {
-  padding: 4rem 2rem;
+  padding: 4rem 3rem;
   margin-bottom: 3rem;
   background: linear-gradient(
     135deg,
-    #0a1428 0%,
-    #0d1b2a 100%
+    #1b1c24 0%,
+    #15161c 100%
   );
-  border-radius: 0;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-  padding-left: calc(50vw - 50%);
-  padding-right: calc(50vw - 50%);
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
 .hero-container {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  max-width: 1600px;
+  max-width: 1200px;
   margin: 0 auto;
   align-items: center;
 }
@@ -34,13 +31,12 @@
 
 .hero-image {
   width: 100%;
-  max-width: 600px;
   height: auto;
   border-radius: 1.5rem;
   object-fit: cover;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease;
-  aspect-ratio: 3/2;
+  aspect-ratio: 1 / 1.05;
 
   &:hover {
     transform: scale(1.02);
@@ -71,12 +67,10 @@
 }
 
 .hero-profile-img {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   object-fit: cover;
-  border: 5px solid rgba(255, 100, 200, 0.5);
-  box-shadow: 0 0 40px rgba(255, 100, 200, 0.3);
 }
 
 // Title
@@ -91,10 +85,7 @@
 }
 
 .hero-name {
-  background: linear-gradient(135deg, #ff64c8 0%, #ff80ab 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
 }
 
 // Tagline
@@ -127,15 +118,15 @@
 // CTA Button
 .hero-cta-button {
   align-self: flex-start;
-  padding: 0.9rem 2.8rem;
-  background: linear-gradient(135deg, #ff64c8 0%, #ff1493 100%);
+  margin-top: 0.5rem;
+  padding: 0.9rem 1.8rem;
+  background: linear-gradient(135deg, #d81b60 0%, #8e24aa 100%);
   color: #ffffff;
   text-decoration: none;
-  border-radius: 0.4rem;
+  border-radius: 0.5rem;
   font-weight: 600;
   font-size: 0.95rem;
   transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(255, 100, 200, 0.4);
   border: none;
   cursor: pointer;
   display: inline-block;
