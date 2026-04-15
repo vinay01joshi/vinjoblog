@@ -50,14 +50,55 @@
     }
   }
 
+  // Load More Logic
+  let currentlyShown = 4;
+  const postsPerLoad = 4;
+
+  function attachLoadMoreListener() {
+    const loadMoreBtn = document.getElementById("loadMoreBtn");
+    if (!loadMoreBtn) return;
+
+    loadMoreBtn.addEventListener("click", function () {
+      const gridItems = document.querySelectorAll("#postsGrid .post-item");
+      const listItems = document.querySelectorAll("#postsList .post-item-list");
+
+      // Show next batch in grid
+      let gridCount = 0;
+      for (let i = currentlyShown; i < currentlyShown + postsPerLoad && i < gridItems.length; i++) {
+        gridItems[i].style.display = "";
+        gridCount++;
+      }
+
+      // Show next batch in list
+      for (let i = currentlyShown; i < currentlyShown + postsPerLoad && i < listItems.length; i++) {
+        listItems[i].style.display = "";
+      }
+
+      currentlyShown += postsPerLoad;
+
+      // Hide button if all are shown
+      if (currentlyShown >= gridItems.length) {
+        loadMoreBtn.parentElement.style.display = "none";
+      }
+    });
+
+    // Initial check to hide button if there's <= 4 posts total
+    const gridItems = document.querySelectorAll("#postsGrid .post-item");
+    if (gridItems.length <= 4) {
+      loadMoreBtn.parentElement.style.display = "none";
+    }
+  }
+
   // Initialize on DOM ready
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {
       initializeViewMode();
       attachToggleListener();
+      attachLoadMoreListener();
     });
   } else {
     initializeViewMode();
     attachToggleListener();
+    attachLoadMoreListener();
   }
 })();
