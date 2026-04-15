@@ -31,13 +31,13 @@ $accent-secondary: #ff80ab;
 .brand-name {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-color);
   text-decoration: none;
   transition: color 0.3s ease;
   letter-spacing: -0.5px;
 
   &:hover {
-    color: #64b5f6;
+    opacity: 0.8;
   }
 }
 
@@ -72,7 +72,6 @@ $accent-secondary: #ff80ab;
 
   &.active {
     color: #ffffff;
-    background: rgba(255, 100, 200, 0.2);
     border-bottom: 2px solid $accent-primary;
   }
 }
@@ -244,7 +243,6 @@ $accent-secondary: #ff80ab;
 
     &.active {
       color: #1a1a1a;
-      background: rgba(25, 118, 210, 0.1);
       border-bottom-color: #1976d2;
     }
   }
