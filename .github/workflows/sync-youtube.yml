@@ -1,0 +1,37 @@
+name: Sync YouTube Content
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Run daily at midnight
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml
+
+      - name: Run Sync Script
+        run: python scripts/sync_youtube.py
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add _data/videos.yml _data/shorts.yml
+          git diff-index --quiet HEAD || git commit -m "Auto-sync YouTube content [skip ci]"
+          git push

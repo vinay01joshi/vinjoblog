@@ -1,0 +1,20 @@
+<div class="shorts-marquee-container">
+  <div class="marquee-title">YouTube Shorts</div>
+  <div class="marquee-track">
+    {% for i in (1..2) %}
+      {% for short in site.data.shorts %}
+        <a href="https://www.youtube.com/shorts/{{ short.youtube_id }}" target="_blank" class="short-card" title="{{ short.title }}">
+          <img src="https://img.youtube.com/vi/{{ short.youtube_id }}/maxresdefault.jpg" alt="{{ short.title }}" loading="lazy">
+          <div class="short-overlay">
+            <div class="play-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+            <span class="short-title">{{ short.title }}</span>
+          </div>
+        </a>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</div>

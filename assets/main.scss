@@ -3,17 +3,25 @@
 ---
 
 @use "minima";
-@import "css/navbar";
+@use "css/navbar" as navbar;
+@use "css/hero" as hero;
+@use "css/theme" as theme;
+@use "css/posts-view" as posts-view;
+@use "css/videos" as videos;
+@use "css/marquee" as marquee;
 
 // Google Fonts
-$font-family-poppins: 'Poppins', sans-serif;
-$font-family-mono: 'Roboto Mono', monospace;
+$font-family-poppins: "Poppins", sans-serif;
+$font-family-mono: "Roboto Mono", monospace;
 
 // Apply fonts globally
-html, body {
+html,
+body {
   font-family: $font-family-poppins;
 }
 
-code, pre, .highlight {
+code,
+pre,
+.highlight {
   font-family: $font-family-mono;
 }

@@ -1,0 +1,100 @@
+<!-- Custom Site Footer -->
+<footer class="site-footer">
+  <div class="footer-wrapper">
+    <!-- Brand Info -->
+    <div class="footer-brand">
+      <h2>{{ site.title | default: "Coderon" }}</h2>
+      <p>{{ site.description }}</p>
+      <div class="footer-socials">
+        {%- if site.twitter_username -%}
+          <a href="https://twitter.com/{{ site.twitter_username }}" aria-label="Twitter">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        {%- endif -%}
+        {%- if site.facebook_username -%}
+          <a href="https://facebook.com/{{ site.facebook_username }}" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+        {%- endif -%}
+        {%- if site.mastodon_username -%}
+          <a href="https://mastodon.social/{{ site.mastodon_username }}" aria-label="Mastodon">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M23.268 5.313c-.35-2.578-2.617-4.61-5.304-5.004C17.51.242 15.792 0 11.813 0h-.03c-3.98 0-4.835.242-5.288.309C3.882.692 1.496 2.518.917 5.127.303 7.758.148 10.85.148 13.41c0 2.556.155 5.648.769 8.279.58 2.592 2.966 4.418 5.578 4.817.453.068 1.309.309 5.288.309h.03c3.979 0 5.698-.242 6.151-.309 2.612-.4 4.998-2.225 5.502-4.817.614-2.631.769-5.723.769-8.279 0-2.56-.08-5.648-.769-8.279zm-13.405 13.905H7.49V9.23c0-1.154.467-1.74 1.4-1.74.933 0 1.467.586 1.467 1.74v10.048zm3.946 0h-2.37V9.23c0-1.154.467-1.74 1.4-1.74.933 0 1.467.586 1.467 1.74v10.048zm3.946 0h-2.37V9.23c0-1.154.467-1.74 1.4-1.74.933 0 1.467.586 1.467 1.74v10.048z"/></svg>
+          </a>
+        {%- endif -%}
+        {%- if site.reddit_username -%}
+          <a href="https://reddit.com/user/{{ site.reddit_username }}" aria-label="Reddit">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.25a1.25 1.25 0 0 1-2.5 0c0-.689.562-1.25 1.25-1.25zm-5.01 1.25c.69 0 1.25.56 1.25 1.25a1.25 1.25 0 0 1-2.5 0c0-.69.56-1.25 1.25-1.25zm-3.75 1.25c.69 0 1.25.56 1.25 1.25a1.25 1.25 0 0 1-2.5 0c0-.69.56-1.25 1.25-1.25zm.92 6.962c-.032.032-.056.07-.076.11l-.01.01c-.247.491-.74.822-1.33.822a1.498 1.498 0 0 1-1.447-1.13c-.112-.416-.484-.716-.923-.716H5.45c-.412 0-.756.326-.812.722a4.991 4.991 0 0 0 9.712 0c-.056-.396-.4-.722-.812-.722h-.944c-.439 0-.811.3-.923.716a1.498 1.498 0 0 1-1.447 1.13c-.59 0-1.083-.331-1.33-.822l-.01-.01c-.02-.04-.044-.078-.076-.11z"/></svg>
+          </a>
+        {%- endif -%}
+        {%- if site.github_username -%}
+          <a href="https://github.com/{{ site.github_username }}" aria-label="GitHub">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+        {%- endif -%}
+        {%- if site.rss_path -%}
+          <a href="{{ site.rss_path | relative_url }}" aria-label="RSS">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M6.503 20.752c0 1.171-.949 2.12-2.12 2.12s-2.12-.949-2.12-2.12.949-2.12 2.12-2.12 2.12.949 2.12 2.12zm1.15-20.752l-1.85 2.471c7.749 5.809 11.319 12.048 11.319 18.281v2.498h3.378v-2.498c0-8.369-4.851-16.716-12.847-20.752zm-1.15 6.136l-1.85 2.471c5.211 3.908 7.615 8.11 7.615 12.144v2.498h3.378v-2.498c0-5.63-3.264-11.242-9.143-14.615z"/></svg>
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <!-- Recent Posts -->
+    <div class="footer-recent-posts">
+      <h3>Recent Posts</h3>
+      <div class="footer-post-list">
+        {% for post in site.posts limit:3 %}
+          {% assign image_url = post.image %}
+          {% if image_url == nil or image_url == empty %}
+            {% assign img_parts = post.content | split: '<img ' %}
+            {% if img_parts.size > 1 %}
+              {% assign src_parts = img_parts[1] | split: 'src="' %}
+              {% assign image_url = src_parts[1] | split: '"' | first %}
+            {% endif %}
+          {% endif %}
+          {% if image_url != nil and image_url != empty %}
+            {% assign has_http = image_url | slice: 0, 4 %}
+            {% if has_http != 'http' %}
+              {% assign image_url = image_url | relative_url %}
+            {% endif %}
+          {% endif %}
+          <div class="footer-post-item">
+            <div class="footer-post-img-wrapper">
+              {% if image_url != nil and image_url != empty %}
+                <div class="footer-post-img" style="background-image: url('{{ image_url }}');"></div>
+              {% else %}
+                {% assign color_index = forloop.index | modulo: 3 %}
+                <div class="footer-post-img placeholder-{{ color_index | plus: 1 }}"></div>
+              {% endif %}
+            </div>
+            <div class="footer-post-meta">
+              <h4><a href="{{ post.url | relative_url }}">{{ post.title | strip_html | truncatewords: 8 }}</a></h4>
+              <span>{{ post.date | date: "%d %b, %Y" | upcase }}</span>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Menu -->
+    <div class="footer-menu">
+      <h3>Menu</h3>
+      <ul>
+        <li><a href="{{ "/" | relative_url }}">Home</a></li>
+        <li><a href="#">Videos</a></li>
+        <li><a href="#">Archive</a></li>
+        <li><a href="#">Get Theme</a></li>
+      </ul>
+    </div>
+
+    <!-- Pages -->
+    <div class="footer-pages">
+      <h3>Pages</h3>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Elements</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>

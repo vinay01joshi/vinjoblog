@@ -1,0 +1,403 @@
+// Global Theme System
+// ==================
+
+// Color Variables
+$dark-bg: #0a1428;
+$dark-bg-secondary: #0d1b2a;
+$dark-text: #ffffff;
+$dark-text-secondary: rgba(255, 255, 255, 0.7);
+
+$light-bg: #ffffff;
+$light-bg-secondary: #f5f5f5;
+$light-text: #1a1a1a;
+$light-text-secondary: rgba(0, 0, 0, 0.7);
+
+$accent-primary: #ff64c8;
+$accent-secondary: #ff80ab;
+
+// CSS Custom Properties for Theme
+:root {
+  // Dark mode defaults
+  --bg-color: #{$dark-bg};
+  --bg-secondary: #{$dark-bg-secondary};
+  --text-color: #{$dark-text};
+  --text-secondary: #{$dark-text-secondary};
+  --border-color: rgba(255, 255, 255, 0.1);
+  --input-bg: rgba(255, 255, 255, 0.08);
+  --input-border: rgba(255, 255, 255, 0.2);
+  --link-color: #{$dark-text};
+  --code-bg: rgba(255, 100, 200, 0.05);
+}
+
+// Light Mode Variables
+.light-mode {
+  --bg-color: #{$light-bg};
+  --bg-secondary: #{$light-bg-secondary};
+  --text-color: #{$light-text};
+  --text-secondary: #{$light-text-secondary};
+  --border-color: rgba(0, 0, 0, 0.1);
+  --input-bg: rgba(0, 0, 0, 0.02);
+  --input-border: rgba(0, 0, 0, 0.1);
+  --link-color: #{$light-text};
+  --code-bg: rgba(255, 100, 200, 0.08);
+}
+
+// Global Styles Applied to All Elements
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+// Typography
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-color);
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  color: var(--text-color);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+// Links
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:visited {
+    color: var(--link-color);
+  }
+}
+
+// Headings
+.post-title,
+.page-title,
+.post-list h2,
+.archive-title {
+  color: var(--text-color) !important;
+}
+
+// Code Blocks
+code,
+pre,
+.highlight {
+  background-color: var(--code-bg);
+  color: var(--text-color);
+  border-radius: 0.25rem;
+}
+
+code {
+  padding: 0.2rem 0.4rem;
+}
+
+pre {
+  padding: 1rem;
+  overflow-x: auto;
+  border-left: 3px solid $accent-primary;
+  line-height: 1.5;
+}
+
+// Form Elements
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="number"],
+textarea,
+select {
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  border: 1px solid var(--input-border);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  font-family: inherit;
+  transition: all 0.2s ease;
+
+  &:focus {
+    outline: none;
+    border-color: $accent-primary;
+    box-shadow: 0 0 0 3px rgba(255, 100, 200, 0.1);
+  }
+
+  &::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.6;
+  }
+}
+
+// Buttons
+button,
+.btn,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  background: linear-gradient(
+    135deg,
+    $accent-primary 0%,
+    $accent-secondary 100%
+  );
+  color: var(--text-color);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 100, 200, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// Post List
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+
+  li {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: var(--border-color);
+      transform: translateX(4px);
+    }
+
+    a {
+      color: var(--text-color);
+
+      &:hover {
+        color: $accent-primary;
+      }
+    }
+  }
+}
+
+// Post Meta
+.post-meta,
+.post-date,
+.archive-item-date {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+// Blockquote
+blockquote {
+  border-left: 3px solid $accent-primary;
+  padding-left: 1rem;
+  margin-left: 0;
+  margin-right: 0;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+// Horizontal Rule
+hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 2rem 0;
+}
+
+// Tables
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+
+  th {
+    background-color: var(--bg-secondary);
+    color: var(--text-color);
+    padding: 0.75rem;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border-color);
+  }
+
+  td {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-color);
+  }
+
+  tr:hover {
+    background-color: var(--bg-secondary);
+  }
+}
+
+// Wrapper / Container
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+// Page Content
+.page-content {
+  padding: 0 !important;
+  margin: 0 !important;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+// Archive / Post Index
+.archive-year {
+  color: var(--text-color);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.archive-item {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  a {
+    color: var(--text-color);
+
+    &:hover {
+      color: $accent-primary;
+    }
+  }
+}
+
+// Pagination
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+
+  a,
+  .page-number,
+  span {
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+    color: var(--text-color);
+    text-decoration: none;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+
+    &.current {
+      background: linear-gradient(
+        135deg,
+        $accent-primary 0%,
+        $accent-secondary 100%
+      );
+      color: var(--text-color);
+      font-weight: 600;
+      border: none;
+    }
+
+    &:not(.current):not(.disabled):hover {
+      background-color: var(--border-color);
+    }
+
+    &.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// Utility Classes
+.text-muted {
+  color: var(--text-secondary);
+}
+
+.bg-light {
+  background-color: var(--bg-secondary) !important;
+}
+
+// Ensure all text elements inherit theme colors
+main {
+  color: var(--text-color);
+}
+
+section {
+  color: var(--text-color);
+}
+
+article {
+  color: var(--text-color);
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--text-color);
+  }
+
+  p,
+  li,
+  dt,
+  dd {
+    color: var(--text-color);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 0 0.75rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+}
