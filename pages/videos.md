@@ -1,101 +1,58 @@
 ---
 layout: page
-title: Videos
+title: 
 permalink: /videos/
 ---
 
-<div class="videos-container">
-  {% for video in site.data.videos %}
-    <div class="video-card">
-      <div class="video-wrapper">
-        <iframe 
-          width="100%" 
-          height="400" 
-          src="https://www.youtube.com/embed/{{ video.youtube_id }}" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen>
-        </iframe>
-      </div>
-      <div class="video-content">
-        <h3>{{ video.title }}</h3>
-        <p class="video-date">{{ video.date | date: "%B %d, %Y" }}</p>
-        <p class="video-description">{{ video.description }}</p>
-        {% if video.category %}
-          <p class="video-category"><strong>Category:</strong> {{ video.category }}</p>
-        {% endif %}
-      </div>
+<div class="videos-page">
+  <header class="videos-header">
+    <div class="header-content">
+      <h1>Videos</h1>
+      <p class="videos-desc">Welcome to my project showcase! Explore the intersection of electronic hardware, 3D printing innovations, and software development walkthroughs.</p>
     </div>
-  {% endfor %}
+    <div class="header-actions">
+      <a href="https://www.youtube.com/@vinjo.skills" target="_blank" class="btn-youtube">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        Visit My Channel
+      </a>
+    </div>
+  </header>
+
+  <section class="long-videos-section">
+    <div class="video-grid">
+      {% for video in site.data.videos %}
+        <a href="https://www.youtube.com/watch?v={{ video.youtube_id }}" target="_blank" class="video-card" title="Watch {{ video.title }}">
+          <div class="video-thumbnail">
+            <img src="https://img.youtube.com/vi/{{ video.youtube_id }}/maxresdefault.jpg" alt="{{ video.title }}" loading="lazy">
+            <div class="play-button">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="video-content">
+            {% if video.category %}
+              <span class="video-badge" style="background-color: {{ video.category_color | default: '#666' }}">
+                {{ video.category }}
+              </span>
+            {% endif %}
+            <h2>{{ video.title }}</h2>
+            <p class="video-excerpt">{{ video.description }}</p>
+            <div class="video-meta">
+              <span class="meta-item">{{ video.date | date: "%d %b, %Y" }}</span>
+              <span class="meta-item">{{ video.duration }}</span>
+            </div>
+          </div>
+        </a>
+      {% else %}
+        <div class="no-videos">
+          <p>Restoring videos from YouTube... Check back soon!</p>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="shorts-section">
+    {% include shorts-marquee.html %}
+  </section>
 </div>
-
-<style>
-  .videos-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-
-  .video-card {
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-  }
-
-  .video-card:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  }
-
-  .video-wrapper {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-  }
-
-  .video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .video-content {
-    padding: 1.5rem;
-  }
-
-  .video-content h3 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    font-size: 1.3rem;
-  }
-
-  .video-date {
-    color: #999;
-    font-size: 0.9rem;
-    margin: 0.5rem 0;
-  }
-
-  .video-description {
-    color: #555;
-    line-height: 1.6;
-    margin: 1rem 0;
-  }
-
-  .video-category {
-    color: #666;
-    font-size: 0.95rem;
-    margin-bottom: 0;
-  }
-
-  @media (max-width: 768px) {
-    .videos-container {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>

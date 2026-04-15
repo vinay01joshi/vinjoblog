@@ -1,26 +1,40 @@
-# Videos data file
-# Format: Add your YouTube videos here with the following fields:
-# - title: Video title
-# - youtube_id: The YouTube video ID (from the URL: youtube.com/watch?v=YOUTUBE_ID)
-# - date: Publication date (YYYY-MM-DD format)
-# - description: Brief description of the video
-# - category: Video category/topic (optional)
-
-- title: "Getting Started with AI Coding Assistants"
-  youtube_id: "dQw4w9WgXcQ"
-  date: 2026-03-15
-  description: "Learn how to leverage AI coding assistants like GitHub Copilot and other tools to boost your development productivity. In this video, we explore the top AI coding assistant tools available in 2026."
-  category: "AI & Development"
-
-- title: "3D Printing Innovations 2026"
-  youtube_id: "9bZkp7q19f0"
-  date: 2026-03-10
-  description: "A comprehensive look at the latest 3D printing technologies and innovations reshaping the manufacturing industry in 2026, including new materials and techniques."
-  category: "3D Printing"
-
-- title: "Building Your First AI Agent"
-  youtube_id: "jNQXAC9IVRw"
-  date: 2026-02-28
-  description: "Step-by-step guide to building your first AI agent using the Microsoft Agent Framework. Learn the fundamentals and best practices for autonomous agent development."
-  category: "AI & Development"
-# Add more videos below this line
+- title: 'DIY Smart Motion Detector: Build Your Own Home Security (Free & Easy!)'
+  youtube_id: 5BYqpbtgNtA
+  date: '2023-04-15'
+  description: Learn how to build your own smart motion detector for home security
+    using cheap and accessible components. This project is perfect for beginners...
+  category: DIY & Tech
+  category_color: '#A020F0'
+  duration: 10 MIN WATCH
+- title: The Log4j ATTACK That Crippled an Organization!
+  youtube_id: 1U_p-ZVMzqo
+  date: '2023-01-20'
+  description: A deep dive into the Log4j vulnerability, how it works, and the major
+    impact it had on organizations worldwide. Essential for anyone in cybersecurity...
+  category: Security
+  category_color: '#ff0000'
+  duration: 12 MIN WATCH
+- title: '[4k] Tips to HACK any wifi 🛜 with this device 🧑‍💻'
+  youtube_id: _ziK8POEK88
+  date: '2022-11-10'
+  description: Testing the security of WiFi networks using a custom hardware device.
+    This is for educational purposes to help you secure your own network...
+  category: Security
+  category_color: '#ff0000'
+  duration: 8 MIN WATCH
+- title: Unbelievable Bat Transformation Secrets Revealed!
+  youtube_id: nQhYcSb3c_8
+  date: '2022-09-05'
+  description: Exploring the mechanics and engineering behind an amazing 3D printed
+    bat transformation model. See how it works from the inside out...
+  category: 3D Printing
+  category_color: '#3CB371'
+  duration: 5 MIN WATCH
+- title: Build Your Own Otto Robot 🤖🔧
+  youtube_id: 4RSMx2Ml06U
+  date: '2022-03-15'
+  description: Complete guide to printing and building your own Otto Robot. This is
+    a great open-source project for anyone interested in robotics and 3D printing...
+  category: Robotics
+  category_color: '#4169E1'
+  duration: 15 MIN WATCH
