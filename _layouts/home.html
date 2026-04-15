@@ -56,12 +56,26 @@ layout: default
         <div class="posts-grid" id="postsGrid">
           <div class="grid-wrapper">
             {%- for post in site.posts -%}
-            <article class="post-card grid-view post-item" {% if forloop.index > 4 %}style="display: none;"{% endif %}>
-              {%- if post.image -%}
-              <div class="post-image">
-                <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy">
-              </div>
+            {%- assign image_url = post.image -%}
+            {%- if image_url == nil or image_url == empty -%}
+              {%- assign img_parts = post.content | split: '<img ' -%}
+              {%- if img_parts.size > 1 -%}
+                {%- assign src_parts = img_parts[1] | split: 'src="' -%}
+                {%- assign image_url = src_parts[1] | split: '"' | first -%}
               {%- endif -%}
+            {%- endif -%}
+            {%- if image_url != nil and image_url != empty -%}
+              {%- assign has_http = image_url | slice: 0, 4 -%}
+              {%- if has_http != 'http' -%}
+                {%- assign image_url = image_url | relative_url -%}
+              {%- endif -%}
+            {%- endif -%}
+            <article class="post-card grid-view post-item" {% if forloop.index > 4 %}style="display: none;"{% endif %}>
+              <div class="post-image">
+                {%- if image_url != nil and image_url != empty -%}
+                <img src="{{ image_url }}" alt="{{ post.title }}" loading="lazy">
+                {%- endif -%}
+              </div>
               <div class="post-content">
                 {%- if post.categories -%}
                 <div class="post-categories">
@@ -93,12 +107,26 @@ layout: default
         <div class="posts-list" id="postsList" style="display: none;">
           <ul class="list-wrapper">
             {%- for post in site.posts -%}
-            <li class="post-card list-view post-item-list" {% if forloop.index > 4 %}style="display: none;"{% endif %}>
-              {%- if post.image -%}
-              <div class="post-thumbnail">
-                <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy">
-              </div>
+            {%- assign image_url = post.image -%}
+            {%- if image_url == nil or image_url == empty -%}
+              {%- assign img_parts = post.content | split: '<img ' -%}
+              {%- if img_parts.size > 1 -%}
+                {%- assign src_parts = img_parts[1] | split: 'src="' -%}
+                {%- assign image_url = src_parts[1] | split: '"' | first -%}
               {%- endif -%}
+            {%- endif -%}
+            {%- if image_url != nil and image_url != empty -%}
+              {%- assign has_http = image_url | slice: 0, 4 -%}
+              {%- if has_http != 'http' -%}
+                {%- assign image_url = image_url | relative_url -%}
+              {%- endif -%}
+            {%- endif -%}
+            <li class="post-card list-view post-item-list" {% if forloop.index > 4 %}style="display: none;"{% endif %}>
+              <div class="post-thumbnail">
+                {%- if image_url != nil and image_url != empty -%}
+                <img src="{{ image_url }}" alt="{{ post.title }}" loading="lazy">
+                {%- endif -%}
+              </div>
               <div class="post-content-list">
                 {%- if post.categories -%}
                 <div class="post-categories">
@@ -137,7 +165,7 @@ layout: default
       <aside class="posts-sidebar">
         <!-- Newsletter Card -->
         <div class="sidebar-card newsletter-card">
-          <h3>Stay inspired weekly 📬</h3>
+          <h3>Stay inspired weekly ✌️</h3>
           <p>Every Sunday, I deliver actionable tips for enhancing productivity, practical life advice, and top-notch insights gathered from various sources, right to your email inbox.</p>
           <form class="newsletter-form">
             <input type="email" placeholder="Your email address..." required>
