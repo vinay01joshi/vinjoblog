@@ -13,7 +13,7 @@ layout: default
 {%- endfor -%}
 {%- assign unique_tags = all_tags | uniq | sort -%}
 
-<style>
+<!-- <style>
   {% assign tag_colors = "#d95e34, #cd5676, #c253db, #75bc97, #9a9fae, #5657e4" | split: ", " %}
   {% for tag in unique_tags %}
     {% assign color_index = forloop.index0 | modulo: 6 %}
@@ -23,7 +23,7 @@ layout: default
       border-color: transparent !important;
     }
   {% endfor %}
-</style>
+</style> -->
 
 <div class="home" id="posts">
   {%- if site.posts.size > 0 -%}
