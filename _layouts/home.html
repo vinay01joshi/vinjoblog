@@ -7,13 +7,13 @@ layout: default
 <!-- Calculate unique tags globally for consistent coloring -->
 {%- assign all_tags = "" | split: "," -%}
 {%- for post in site.posts -%}
-  {%- for category in post.categories -%}
-    {%- assign all_tags = all_tags | push: category -%}
-  {%- endfor -%}
+{%- for category in post.categories -%}
+{%- assign all_tags = all_tags | push: category -%}
+{%- endfor -%}
 {%- endfor -%}
 {%- assign unique_tags = all_tags | uniq | sort -%}
 
-<style>
+<!-- <style>
   {% assign tag_colors = "#d95e34, #cd5676, #c253db, #75bc97, #9a9fae, #5657e4" | split: ", " %}
   {% for tag in unique_tags %}
     {% assign color_index = forloop.index0 | modulo: 6 %}
@@ -23,199 +23,149 @@ layout: default
       border-color: transparent !important;
     }
   {% endfor %}
-</style>
+</style> -->
 
 <div class="home" id="posts">
   {%- if site.posts.size > 0 -%}
-    <div class="posts-wrapper">
-      <!-- Main Posts Area -->
-      <main class="posts-main">
-        <!-- Section Header with Divider & Toggle -->
-        <div class="posts-section-header">
-          <h2 class="section-title">The Binary Journal</h2>
-          <div class="section-divider"></div>
-          <button class="view-toggle section-toggle" id="viewToggle" aria-label="Toggle between grid and list view" title="Toggle view">
-            <svg class="icon-grid active" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="3" width="7" height="7"></rect>
-              <rect x="14" y="3" width="7" height="7"></rect>
-              <rect x="14" y="14" width="7" height="7"></rect>
-              <rect x="3" y="14" width="7" height="7"></rect>
-            </svg>
-            <svg class="icon-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="8" y1="6" x2="21" y2="6"></line>
-              <line x1="8" y1="12" x2="21" y2="12"></line>
-              <line x1="8" y1="18" x2="21" y2="18"></line>
-              <circle cx="3" cy="6" r="1.5"></circle>
-              <circle cx="3" cy="12" r="1.5"></circle>
-              <circle cx="3" cy="18" r="1.5"></circle>
-            </svg>
-          </button>
-        </div>
+  <div class="posts-wrapper">
+    <!-- Main Posts Area -->
+    <main class="posts-main">
+      <!-- Section Header with Divider & Toggle -->
+      <div class="posts-section-header">
+        <h2 class="section-title">The Binary Journal</h2>
+        <div class="section-divider"></div>
+        <button class="view-toggle section-toggle" id="viewToggle" aria-label="Toggle between grid and list view"
+          title="Toggle view">
+          <svg class="icon-grid active" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          <svg class="icon-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="8" y1="6" x2="21" y2="6"></line>
+            <line x1="8" y1="12" x2="21" y2="12"></line>
+            <line x1="8" y1="18" x2="21" y2="18"></line>
+            <circle cx="3" cy="6" r="1.5"></circle>
+            <circle cx="3" cy="12" r="1.5"></circle>
+            <circle cx="3" cy="18" r="1.5"></circle>
+          </svg>
+        </button>
+      </div>
 
-        <!-- Grid View (Default) -->
-        <div class="posts-grid" id="postsGrid">
-          <div class="grid-wrapper">
-            {%- for post in site.posts -%}
-            {%- assign image_url = post.image -%}
-            {%- if image_url == nil or image_url == empty -%}
-              {%- assign img_parts = post.content | split: '<img ' -%}
+      <!-- Grid View (Default) -->
+      <div class="posts-grid" id="postsGrid">
+        <div class="grid-wrapper">
+          {%- for post in site.posts -%}
+          {%- assign image_url = post.image -%}
+          {%- if image_url == nil or image_url == empty -%}
+          {%- assign img_parts = post.content | split: '<img ' -%}
               {%- if img_parts.size > 1 -%}
-                {%- assign src_parts = img_parts[1] | split: 'src="' -%}
+                {%- assign src_parts = img_parts[1] | split: ' src="' -%}
                 {%- assign image_url = src_parts[1] | split: '"' | first -%}
               {%- endif -%}
             {%- endif -%}
             {%- if image_url != nil and image_url != empty -%}
               {%- assign has_http = image_url | slice: 0, 4 -%}
-              {%- if has_http != 'http' -%}
-                {%- assign image_url = image_url | relative_url -%}
-              {%- endif -%}
+              {%- if has_http != ' http' -%} {%- assign image_url=image_url | relative_url -%} {%- endif -%} {%- endif
+            -%} <article class="post-card grid-view post-item" {% if forloop.index> 4 %}style="display: none;"{% endif
+          %}>
+          <div class="post-image">
+            {%- if image_url != nil and image_url != empty -%}
+            <img src="{{ image_url }}" alt="{{ post.title }}" loading="lazy">
             {%- endif -%}
-            <article class="post-card grid-view post-item" {% if forloop.index > 4 %}style="display: none;"{% endif %}>
-              <div class="post-image">
-                {%- if image_url != nil and image_url != empty -%}
-                <img src="{{ image_url }}" alt="{{ post.title }}" loading="lazy">
-                {%- endif -%}
-              </div>
-              <div class="post-content">
-                {%- if post.categories -%}
-                <div class="post-categories">
-                  {%- for category in post.categories -%}
-                  <span class="category-tag tag-{{ category | downcase | slugify }}">{{ category }}</span>
-                  {%- endfor -%}
-                </div>
-                {%- endif -%}
-                <h3>
-                  <a class="post-link" href="{{ post.url | relative_url }}">
-                    {{ post.title | escape }}
-                  </a>
-                </h3>
-                {%- if site.show_excerpts -%}
-                <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
-                {%- endif -%}
-                <div class="post-meta">
-                  {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-                  <span class="post-date">{{ post.date | date: date_format }}</span>
-                  <span class="read-time">5 min read</span>
-                </div>
-              </div>
-            </article>
-            {%- endfor -%}
           </div>
-        </div>
-
-        <!-- List View -->
-        <div class="posts-list" id="postsList" style="display: none;">
-          <ul class="list-wrapper">
-            {%- for post in site.posts -%}
-            {%- assign image_url = post.image -%}
-            {%- if image_url == nil or image_url == empty -%}
-              {%- assign img_parts = post.content | split: '<img ' -%}
-              {%- if img_parts.size > 1 -%}
-                {%- assign src_parts = img_parts[1] | split: 'src="' -%}
-                {%- assign image_url = src_parts[1] | split: '"' | first -%}
-              {%- endif -%}
+          <div class="post-content">
+            {%- if post.categories -%}
+            <div class="post-categories">
+              {%- for category in post.categories -%}
+              <span class="category-tag tag-{{ category | downcase | slugify }}">{{ category }}</span>
+              {%- endfor -%}
+            </div>
             {%- endif -%}
-            {%- if image_url != nil and image_url != empty -%}
-              {%- assign has_http = image_url | slice: 0, 4 -%}
-              {%- if has_http != 'http' -%}
-                {%- assign image_url = image_url | relative_url -%}
-              {%- endif -%}
+            <h3>
+              <a class="post-link" href="{{ post.url | relative_url }}">
+                {{ post.title | escape }}
+              </a>
+            </h3>
+            {%- if site.show_excerpts -%}
+            <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
             {%- endif -%}
-            <li class="post-card list-view post-item-list" {% if forloop.index > 4 %}style="display: none;"{% endif %}>
-              <div class="post-thumbnail">
-                {%- if image_url != nil and image_url != empty -%}
-                <img src="{{ image_url }}" alt="{{ post.title }}" loading="lazy">
-                {%- endif -%}
-              </div>
-              <div class="post-content-list">
-                {%- if post.categories -%}
-                <div class="post-categories">
-                  {%- for category in post.categories -%}
-                  <span class="category-tag tag-{{ category | downcase | slugify }}">{{ category }}</span>
-                  {%- endfor -%}
-                </div>
-                {%- endif -%}
-                <h3>
-                  <a class="post-link" href="{{ post.url | relative_url }}">
-                    {{ post.title | escape }}
-                  </a>
-                </h3>
-                {%- if site.show_excerpts -%}
-                <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
-                {%- endif -%}
-                <div class="post-meta">
-                  {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-                  <span class="post-date">{{ post.date | date: date_format }}</span>
-                </div>
-              </div>
-            </li>
-            {%- endfor -%}
-          </ul>
-        </div>
-
-        <!-- Load More Button -->
-        <div class="load-more-container">
-          <button class="load-more-btn" id="loadMoreBtn">Load More</button>
-        </div>
-
-        {% include latest_videos.html %}
-
-        <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
-      </main>
-
-      <!-- Right Sidebar -->
-      <aside class="posts-sidebar">
-        <!-- Newsletter Card -->
-        <div class="sidebar-card newsletter-card">
-          <h3>Stay inspired weekly ✌️</h3>
-          <p>Every Sunday, I deliver actionable tips for enhancing productivity, practical life advice, and top-notch insights gathered from various sources, right to your email inbox.</p>
-          <form class="newsletter-form">
-            <input type="email" placeholder="Your email address..." required>
-            <button type="submit" class="newsletter-btn">Join Now</button>
-          </form>
-        </div>
-
-        <!-- Social Links -->
-        <div class="sidebar-card social-links">
-          <a href="#" aria-label="Twitter" title="Twitter">𝕏</a>
-          <a href="#" aria-label="Facebook" title="Facebook">f</a>
-          <a href="#" aria-label="Mastodon" title="Mastodon">🐘</a>
-          <a href="#" aria-label="Reddit" title="Reddit">r</a>
-          <a href="#" aria-label="GitHub" title="GitHub">⚙</a>
-          <a href="#" aria-label="RSS" title="RSS">≡</a>
-        </div>
-
-        <!-- Featured Posts -->
-        <div class="sidebar-card featured-posts">
-          <h3>Featured posts</h3>
-          <div class="featured-list">
-            {%- assign featured = site.posts | where: "featured", true | first -%}
-            {%- if featured -%}
-            <article class="featured-item">
-              {%- if featured.image -%}
-              <img src="{{ featured.image | relative_url }}" alt="{{ featured.title }}" loading="lazy">
-              {%- endif -%}
-              <h4>
-                <a href="{{ featured.url | relative_url }}">{{ featured.title | escape }}</a>
-              </h4>
+            <div class="post-meta">
               {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-              <span class="featured-date">{{ featured.date | date: date_format }}</span>
-            </article>
+              <span class="post-date">{{ post.date | date: date_format }}</span>
+              <span class="read-time">5 min read</span>
+            </div>
+          </div>
+          </article>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <!-- List View -->
+      <div class="posts-list" id="postsList" style="display: none;">
+        <ul class="list-wrapper">
+          {%- for post in site.posts -%}
+          {%- assign image_url = post.image -%}
+          {%- if image_url == nil or image_url == empty -%}
+          {%- assign img_parts = post.content | split: '<img ' -%}
+              {%- if img_parts.size > 1 -%}
+                {%- assign src_parts = img_parts[1] | split: ' src="' -%}
+                {%- assign image_url = src_parts[1] | split: '"' | first -%}
+              {%- endif -%}
+            {%- endif -%}
+            {%- if image_url != nil and image_url != empty -%}
+              {%- assign has_http = image_url | slice: 0, 4 -%}
+              {%- if has_http != ' http' -%} {%- assign image_url=image_url | relative_url -%} {%- endif -%} {%- endif
+            -%} <li class="post-card list-view post-item-list" {% if forloop.index> 4 %}style="display: none;"{% endif
+          %}>
+          <div class="post-thumbnail">
+            {%- if image_url != nil and image_url != empty -%}
+            <img src="{{ image_url }}" alt="{{ post.title }}" loading="lazy">
             {%- endif -%}
           </div>
-        </div>
-
-        <!-- Topics Tags -->
-        <div class="sidebar-card topics">
-          <h3>Topics</h3>
-          <div class="topics-list">
-            {%- for tag in unique_tags -%}
-            <span class="topic-tag tag-{{ tag | downcase | slugify }}">{{ tag }}</span>
-            {%- endfor -%}
+          <div class="post-content-list">
+            {%- if post.categories -%}
+            <div class="post-categories">
+              {%- for category in post.categories -%}
+              <span class="category-tag tag-{{ category | downcase | slugify }}">{{ category }}</span>
+              {%- endfor -%}
+            </div>
+            {%- endif -%}
+            <h3>
+              <a class="post-link" href="{{ post.url | relative_url }}">
+                {{ post.title | escape }}
+              </a>
+            </h3>
+            {%- if site.show_excerpts -%}
+            <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+            {%- endif -%}
+            <div class="post-meta">
+              {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+              <span class="post-date">{{ post.date | date: date_format }}</span>
+              <span class="read-time">3 MIN READ</span>
+            </div>
           </div>
-        </div>
-      </aside>
-    </div>
+          </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <!-- Load More Button -->
+      <div class="load-more-container">
+        <button class="load-more-btn" id="loadMoreBtn">Load More</button>
+      </div>
+
+
+    </main>
+
+    <!-- Right Sidebar -->
+    <aside class="posts-sidebar">
+      {% include sidebar.html %}
+    </aside>
+  </div>
   {%- endif -%}
+
+  {% include latest_videos.html %}
 
 </div>

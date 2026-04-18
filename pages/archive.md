@@ -1,166 +1,174 @@
 ---
-layout: page
+layout: default
 title: Archive
 permalink: /archive/
 ---
 
-<div class="archive-container">
-  <h2>Blog Archive</h2>
-  
+<div class="archive-page-v2">
+  <h1 class="main-title">Archive</h1>
+
   {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
-  
-  {% for year_group in posts_by_year reversed %}
-    <div class="archive-year">
-      <h3>{{ year_group.name }}</h3>
-      
+  {% for year_group in posts_by_year %}
+    <section class="year-section">
+      <h2 class="year-title">{{ year_group.name }} <span class="sup-count">{{ year_group.items.size }}</span></h2>
+
       {% assign posts_by_month = year_group.items | group_by_exp: "post", "post.date | date: '%B'" %}
-      
       {% for month_group in posts_by_month %}
-        <div class="archive-month">
-          <h4>{{ month_group.name }}</h4>
-          <ul class="archive-posts">
+        <div class="month-group">
+          <div class="month-sidebar">
+            <h3 class="month-title">{{ month_group.name }} <span class="sup-count">{{ month_group.items.size }}</span></h3>
+          </div>
+          <div class="month-posts">
             {% for post in month_group.items %}
-              <li>
-                <span class="post-date">{{ post.date | date: "%d" }}</span>
-                <a href="{{ post.url }}">{{ post.title }}</a>
-                {% if post.categories %}
-                  <span class="post-categories">
-                    {% for category in post.categories %}
-                      <span class="category-tag">{{ category }}</span>
-                    {% endfor %}
+              <div class="archive-entry">
+                <div class="entry-title">
+                  <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                </div>
+                <div class="entry-meta">
+                  <span class="entry-date">{{ post.date | date: "%d %b, %Y" | upcase }}</span>
+                  <span class="entry-read">
+                    {{ post.content | strip_html | number_of_words | divided_by: 200 | plus: 1 }} MIN READ
                   </span>
-                {% endif %}
-              </li>
+                </div>
+              </div>
             {% endfor %}
-          </ul>
+          </div>
         </div>
       {% endfor %}
-    </div>
+    </section>
   {% endfor %}
 </div>
 
 <style>
-  .archive-container {
-    max-width: 800px;
-    margin: 2rem auto;
+  .archive-page-v2 {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    color: #fff;
+    font-family: inherit;
   }
 
-  .archive-year {
-    margin: 2rem 0;
+  .main-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    letter-spacing: -2px;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  .archive-year h3 {
-    font-size: 1.5rem;
-    color: #333;
-    border-bottom: 2px solid #007bff;
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
+  .year-section {
+    margin-bottom: 4rem;
   }
 
-  .archive-month {
-    margin-bottom: 1.5rem;
-    margin-left: 1rem;
-  }
-
-  .archive-month h4 {
-    font-size: 1.1rem;
-    color: #555;
-    margin-bottom: 0.5rem;
-  }
-
-  .archive-posts {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .archive-posts li {
+  .year-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
     display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 0.8rem;
-    padding: 0.5rem;
-    border-radius: 4px;
-    transition: background-color 0.2s ease;
+    align-items: flex-start;
+    gap: 0.4rem;
+    color: #fff;
   }
 
-  .archive-posts li:hover {
-    background-color: #f5f5f5;
-  }
-
-  .archive-posts .post-date {
-    color: #999;
-    font-size: 0.9rem;
-    min-width: 30px;
-    text-align: center;
-  }
-
-  .archive-posts a {
-    color: #007bff;
-    text-decoration: none;
-    flex: 1;
-  }
-
-  .archive-posts a:hover {
-    text-decoration: underline;
-  }
-
-  .post-categories {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-
-  .category-tag {
-    background: #e7f3ff;
-    color: #0066cc;
-    padding: 0.2rem 0.6rem;
-    border-radius: 3px;
+  .sup-count {
     font-size: 0.8rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.3);
+    margin-top: 0.4rem;
   }
 
-  /* Dark mode support */
-  .dark-mode .archive-year h3 {
-    color: #ffffff;
-    border-bottom-color: #64b5f6;
-  }
+  .month-group {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
 
-  .dark-mode .archive-month h4 {
-    color: #b0bec5;
-  }
-
-  .dark-mode .archive-posts li:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-
-  .dark-mode .archive-posts a {
-    color: #64b5f6;
-  }
-
-  .dark-mode .category-tag {
-    background: rgba(100, 181, 246, 0.2);
-    color: #64b5f6;
-  }
-
-  @media (max-width: 768px) {
-    .archive-container {
-      padding: 0 1rem;
+    @media (max-width: 850px) {
+      grid-template-columns: 1fr;
+      gap: 1rem;
     }
+  }
 
-    .archive-posts li {
+  .month-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .month-posts {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .archive-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1.15rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    transition: all 0.2s ease;
+    gap: 2rem;
+  }
+
+  .entry-title {
+    flex: 1;
+    
+    a {
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 600;
+      line-height: 1.4;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  .entry-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    min-width: 120px;
+    margin-top: 0.15rem;
+  }
+
+  .entry-date {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.03em;
+  }
+
+  .entry-read {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.25);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 850px) {
+    .archive-entry {
       flex-direction: column;
+      gap: 0.5rem;
       align-items: flex-start;
-      gap: 0.3rem;
+      padding: 1rem 0;
     }
 
-    .archive-posts .post-date {
-      min-width: auto;
+    .entry-meta {
+      align-items: flex-start;
       text-align: left;
-    }
-
-    .post-categories {
-      width: 100%;
-      margin-top: 0.3rem;
     }
   }
 </style>
+

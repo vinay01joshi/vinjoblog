@@ -1,23 +1,25 @@
 <!-- Latest Videos Component -->
 <section class="latest-videos">
-  <div class="videos-header">
-    <h2 class="section-title">Latest Videos</h2>
-  </div>
-
-  <div class="videos-grid">
-    {% for video in site.data.videos limit:3 %}
-    <div class="video-item">
-      <div class="video-number">{{ forloop.index }}</div>
-      <div class="video-thumbnail-wrapper">
-        <div class="video-thumbnail" style="background-image: url('https://img.youtube.com/vi/{{ video.youtube_id }}/maxresdefault.jpg'); background-size: cover; background-position: center;"></div>
-        <a href="https://www.youtube.com/watch?v={{ video.youtube_id }}" target="_blank" class="play-button" aria-label="Play video">
-          <svg viewBox="0 0 24 24" fill="white">
-            <polygon points="9,7 18,12 9,17"></polygon>
-          </svg>
-        </a>
-      </div>
-      <h4 class="video-title">{{ video.title }}</h4>
+  <div class="latest-videos-container">
+    <div class="videos-header">
+      <h2 class="section-title">Latest Videos</h2>
     </div>
-    {% endfor %}
+
+    <div class="videos-grid">
+      {% for video in site.data.videos limit:3 %}
+      <div class="video-item">
+        <div class="video-number">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</div>
+        <div class="video-thumbnail-wrapper">
+          <div class="video-thumbnail" style="background-image: url('https://img.youtube.com/vi/{{ video.youtube_id }}/maxresdefault.jpg'); background-size: cover; background-position: center;"></div>
+          <a href="https://www.youtube.com/watch?v={{ video.youtube_id }}" target="_blank" class="play-button" aria-label="Play video">
+            <svg viewBox="0 0 24 24" fill="white">
+              <polygon points="9,7 18,12 9,17"></polygon>
+            </svg>
+          </a>
+        </div>
+        <h4 class="video-title">{{ video.title }}</h4>
+      </div>
+      {% endfor %}
+    </div>
   </div>
 </section>
