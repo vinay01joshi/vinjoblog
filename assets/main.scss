@@ -3,9 +3,9 @@
 ---
 
 @use "minima";
+@use "css/theme" as theme;
 @use "css/navbar" as navbar;
 @use "css/hero" as hero;
-@use "css/theme" as theme;
 @use "css/posts-view" as posts-view;
 @use "css/videos" as videos;
 @use "css/marquee" as marquee;
@@ -17,6 +17,24 @@ $font-family-mono: "Roboto Mono", monospace;
 // Apply fonts globally
 html,
 body {
+  font-family: $font-family-mono;
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: -0.2px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar-brand,
+.nav-link,
+.btn,
+.alert strong {
   font-family: $font-family-poppins;
 }
 

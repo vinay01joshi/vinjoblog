@@ -2,52 +2,94 @@
 layout: default
 ---
 
-<article class="post">
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-    <div class="post-meta">
-      <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}">
-        {{ page.date | date: "%B %d, %Y" }}
-      </time>
-      {% if page.author %}
-      <span class="post-author">by {{ page.author }}</span>
-      {% endif %} {% if page.categories %}
-      <span class="post-categories">
-        {% for cat in page.categories %}
-        <span class="category-tag">{{ cat }}</span>
-        {% endfor %}
-      </span>
+<div class="posts-wrapper">
+  <!-- Main Post Content -->
+  <main class="posts-main">
+    <article class="post">
+      <header class="post-header">
+        {% if page.image %}
+        <div class="post-header-image-container">
+          <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" class="post-header-image" />
+        </div>
+        {% endif %}
+        
+        <div class="post-title-meta">
+          {% if page.categories %}
+          <div class="post-categories">
+            {% for cat in page.categories %}
+            <span class="category-tag tag-{{ cat | downcase | slugify }}">{{ cat }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+          
+          <h1 class="post-title">{{ page.title }}</h1>
+          
+          <div class="post-meta">
+            <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}">
+              {{ page.date | date: "%B %-d, %Y" | upcase }}
+            </time>
+            {% if page.author %}
+            <span class="post-author">• BY {{ page.author | upcase }}</span>
+            {% endif %}
+          </div>
+        </div>
+      </header>
+
+      <div class="post-content">
+        {{ content }}
+      </div>
+
+      {% if page.tags %}
+      <footer class="post-footer">
+        <div class="post-tags">
+          {% for tag in page.tags %}
+          <span class="tag">#{{ tag }}</span>
+          {% endfor %}
+        </div>
+      </footer>
       {% endif %}
-    </div>
-  </header>
+    </article>
 
-  <div class="post-content">{{ content }}</div>
+    <!-- Related Posts -->
+    <section class="related-posts">
+      <div class="section-header">
+        <h3>Related Posts</h3>
+        <div class="header-line"></div>
+      </div>
+      <div class="featured-list">
+        {% assign current_post = page %}
+        {% assign count = 0 %}
+        {% for post in site.posts %}
+          {% if post.url != current_post.url and count < 3 %}
+            {% assign match = false %}
+            {% for cat in post.categories %}
+              {% if current_post.categories contains cat %}
+                {% assign match = true %}
+              {% endif %}
+            {% endfor %}
+            
+            {% if match %}
+              <article class="featured-card">
+                <div class="featured-thumb">
+                  {% if post.image %}
+                    <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+                  {% endif %}
+                </div>
+                <div class="featured-content">
+                  <h4><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h4>
+                  <span class="featured-date">{{ post.date | date: "%d %b, %Y" | upcase }}</span>
+                </div>
+              </article>
+              {% assign count = count | plus: 1 %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+  </main>
 
-  {% if page.tags %}
-  <footer class="post-footer">
-    <div class="post-tags">
-      {% for tag in page.tags %}
-      <span class="tag">#{{ tag }}</span>
-      {% endfor %}
-    </div>
-  </footer>
-  {% endif %}
-</article>
-
-<!-- Related Posts -->
-<aside class="related-posts">
-  <h3>Related Posts</h3>
-  <ul>
-    {% assign current_post = page %} {% assign max_related = 3 %} {% assign
-    count = 0 %} {% for post in site.posts %} {% if post.url != current_post.url
-    %} {% assign match_count = 0 %} {% if post.categories ==
-    current_post.categories %} {% assign match_count = match_count | plus: 1 %}
-    {% endif %} {% if match_count > 0 %} {% if count < max_related %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-      <time>{{ post.date | date: "%Y-%m-%d" }}</time>
-    </li>
-    {% assign count = count | plus: 1 %} {% endif %} {% endif %} {% endif %} {%
-    endfor %}
-  </ul>
-</aside>
+  <!-- Side Bar -->
+  <aside class="posts-sidebar">
+    {% include sidebar.html %}
+  </aside>
+</div>

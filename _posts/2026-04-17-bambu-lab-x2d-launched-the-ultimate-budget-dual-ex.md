@@ -1,6 +1,6 @@
 ---
 image: /assets/images/2026-04-17-bambu-lab-x2d-launched-the-ultimate-budget-dual-ex-thumbnail.jpg
-layout: _posts
+layout: post
 title: "Bambu Lab X2D Launched: The Ultimate Budget Dual-Extruder (and How It Compares to the H2D)"
 description: "Bambu Lab just disrupted the 3D printing space again with the new X2D. We break down the specs, dual-extrusion features, and see how it stacks up against the flagship H2D."
 tags: [Bambu Lab, 3D Printing, X2D, H2D, Dual Extrusion, Tech News]
