@@ -1,5 +1,5 @@
 ---
-layout: _posts
+layout: post
 title: "Stop Generating Messy Meshes: Why CADAM's OpenSCAD Approach is the Future of Text-to-CAD"
 tags: [CADAM, OpenSCAD, WebAssembly, Generative AI, 3D Printing, Three.js, Supabase]
 summary: "CADAM generates fully parametric, tweakable OpenSCAD models from text prompts directly in the browser using WebAssembly. It completely rethinks AI generation by outputting programmatic code instead of static vertices."
