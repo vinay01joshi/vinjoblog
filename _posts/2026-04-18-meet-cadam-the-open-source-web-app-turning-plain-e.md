@@ -1,6 +1,6 @@
 ---
 image: /assets/images/2026-04-18-meet-cadam-the-open-source-web-app-turning-plain-e-thumbnail.jpg
-layout: _posts
+layout: post
 title: "Meet CADAM: The Open-Source Web App Turning Plain English into Parametric 3D Models"
 description: "Discover CADAM, a revolutionary open-source text-to-CAD application that leverages AI, WebAssembly, and OpenSCAD to generate interactive 3D models directly in your browser."
 tags: [CADAM, Text-to-CAD, OpenSCAD, WebAssembly, 3D Modeling, Open Source, Three.js, AI Design]
