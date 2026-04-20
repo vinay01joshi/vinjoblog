@@ -9,13 +9,12 @@
         <li><a href="{{ "/" | relative_url }}" class="nav-link {% if page.url == "/" %}active{% endif %}">Home</a></li>
         <li><a href="{{ "/videos/" | relative_url }}" class="nav-link {% if page.url contains "videos" %}active{% endif %}">Videos</a></li>
         <li><a href="{{ "/archive/" | relative_url }}" class="nav-link {% if page.url contains "archive" %}active{% endif %}">Archive</a></li>
-        <li><a href="{{ "/about/" | relative_url }}" class="nav-link {% if page.url contains "about" %}active{% endif %}">About</a></li>
+        <li><a href="https://vinjo.co.in/" class="nav-link" target="_blank" rel="noopener">About</a></li>
         <li class="nav-dropdown">
           <button class="nav-link more-btn" id="moreMenuBtn" aria-label="More options">
             <span class="dots">...</span>
           </button>
           <div class="dropdown-content" id="moreDropdown">
-            <a href="{{ "/contact/" | relative_url }}">Contact</a>
             <a href="{{ "/elements/" | relative_url }}">Elements</a>
           </div>
         </li>

@@ -12,7 +12,7 @@ layout: default
           <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" class="post-header-image" />
         </div>
         {% endif %}
-        
+
         <div class="post-title-meta">
           {% if page.categories %}
           <div class="post-categories">
@@ -21,9 +21,9 @@ layout: default
             {% endfor %}
           </div>
           {% endif %}
-          
+
           <h1 class="post-title">{{ page.title }}</h1>
-          
+
           <div class="post-meta">
             <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}">
               {{ page.date | date: "%B %-d, %Y" | upcase }}
@@ -49,43 +49,6 @@ layout: default
       </footer>
       {% endif %}
     </article>
-
-    <!-- Related Posts -->
-    <section class="related-posts">
-      <div class="section-header">
-        <h3>Related Posts</h3>
-        <div class="header-line"></div>
-      </div>
-      <div class="featured-list">
-        {% assign current_post = page %}
-        {% assign count = 0 %}
-        {% for post in site.posts %}
-          {% if post.url != current_post.url and count < 3 %}
-            {% assign match = false %}
-            {% for cat in post.categories %}
-              {% if current_post.categories contains cat %}
-                {% assign match = true %}
-              {% endif %}
-            {% endfor %}
-            
-            {% if match %}
-              <article class="featured-card">
-                <div class="featured-thumb">
-                  {% if post.image %}
-                    <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
-                  {% endif %}
-                </div>
-                <div class="featured-content">
-                  <h4><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h4>
-                  <span class="featured-date">{{ post.date | date: "%d %b, %Y" | upcase }}</span>
-                </div>
-              </article>
-              {% assign count = count | plus: 1 %}
-            {% endif %}
-          {% endif %}
-        {% endfor %}
-      </div>
-    </section>
   </main>
 
   <!-- Side Bar -->

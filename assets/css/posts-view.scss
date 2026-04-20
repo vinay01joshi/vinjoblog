@@ -44,6 +44,7 @@
 // Main Posts Area
 .posts-main {
   width: 100%;
+  min-width: 0; // CRITICAL: Allows grid item to shrink below content width
 }
 
 // View Toggle Button
@@ -958,6 +959,7 @@
       font-size: 1.05rem; // Reduced from large default
       line-height: 1.75;
       color: var(--text-secondary, rgba(255, 255, 255, 0.8));
+      overflow-wrap: break-word; // Fix for long text overflow
 
       p {
         margin-bottom: 1.6rem;
@@ -982,6 +984,31 @@
         margin: 2rem 0;
         max-width: 100%;
         height: auto;
+        display: block; // Prevents inline spacing issues
+      }
+
+      // Syntax Highlighting & Code Blocks
+      div.highlight,
+      div.highlighter-rouge,
+      pre,
+      code {
+        max-width: calc(100vw - 40px); // Fallback for very long lines
+        @media (min-width: 1024px) {
+          max-width: calc(100% - 2px); // Constraint within post area
+        }
+        overflow-x: auto;
+        white-space: pre; // Ensure code stays formatted
+        word-wrap: normal;
+        background: var(--syntax-highlighting-background, rgba(0, 0, 0, 0.2));
+        border-radius: 8px;
+        position: relative;
+      }
+
+      // Special case for inline code vs block code
+      code:not(pre code) {
+        white-space: normal;
+        word-break: break-word;
+        padding: 0.2rem 0.4rem;
       }
 
       blockquote {

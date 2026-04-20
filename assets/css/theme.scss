@@ -575,6 +575,14 @@ table {
     color 0.3s ease;
 }
 
+// Give post & archive pages breathing room from the navbar
+// (Home page uses hero.scss margin-top instead)
+.page-content > .posts-wrapper,
+.page-content > .archive-page,
+.page-content > .wrapper {
+  padding-top: 2.5rem;
+}
+
 // Archive / Post Index
 .archive-year {
   color: var(--text-color);

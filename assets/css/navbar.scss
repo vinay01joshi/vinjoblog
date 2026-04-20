@@ -131,6 +131,7 @@ $accent-secondary: #ff80ab;
       text-decoration: none;
       font-size: 0.9rem;
       font-weight: 500;
+      font-family: var(--font-family-poppins);
       border-radius: 0.5rem;
       transition: all 0.2s;
 
@@ -180,6 +181,10 @@ $accent-secondary: #ff80ab;
     width: 1.1rem;
     height: 1.1rem;
   }
+
+  // Default (dark mode): show sun, hide moon
+  svg.icon-sun  { display: block; }
+  svg.icon-moon { display: none;  }
 }
 
 // Search Wrapper - Redesigned to match screenshot
@@ -262,16 +267,14 @@ $accent-secondary: #ff80ab;
   --text-primary: #ffffff;
   --text-secondary: #b0bec5;
 
-  .theme-toggle svg.icon-sun {
-    opacity: 1;
-    display: block;
-  }
-
-  .theme-toggle svg.icon-moon {
-    opacity: 0;
-    display: none;
-  }
+  // In dark mode: show sun (click to go light), hide moon
+  .theme-toggle svg.icon-sun  { display: block; }
+  .theme-toggle svg.icon-moon { display: none;  }
 }
+
+// In light mode: show moon (click to go dark), hide sun
+.light-mode .theme-toggle svg.icon-sun  { display: none;  }
+.light-mode .theme-toggle svg.icon-moon { display: block; }
 
 // Responsive Design
 @media (max-width: 768px) {
