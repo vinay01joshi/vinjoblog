@@ -4,6 +4,7 @@ layout: post
 title: "Bambu Lab X2D Launched: The Ultimate Budget Dual-Extruder (and How It Compares to the H2D)"
 description: "Bambu Lab just disrupted the 3D printing space again with the new X2D. We break down the specs, dual-extrusion features, and see how it stacks up against the flagship H2D."
 tags: [Bambu Lab, 3D Printing, X2D, H2D, Dual Extrusion, Tech News]
+category: 3D Printing
 ---
 
 Are you ready for the next evolution in desktop manufacturing? Bambu Lab just dropped a bombshell in April 2026 with the release of the **Bambu Lab X2D**. Positioned as the spiritual successor to the beloved *X1-Carbon*, this new $649 machine brings flagship-level dual-extrusion capabilities to the masses. 

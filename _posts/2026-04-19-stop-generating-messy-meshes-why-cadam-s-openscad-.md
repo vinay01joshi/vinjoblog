@@ -4,6 +4,7 @@ title: "Stop Generating Messy Meshes: Why CADAM's OpenSCAD Approach is the Futur
 tags: [CADAM, OpenSCAD, WebAssembly, Generative AI, 3D Printing, Three.js, Supabase]
 summary: "CADAM generates fully parametric, tweakable OpenSCAD models from text prompts directly in the browser using WebAssembly. It completely rethinks AI generation by outputting programmatic code instead of static vertices."
 image: https://raw.githubusercontent.com/Adam-CAD/CADAM/master/public/Github-Banner-Dark.png
+category: 3D Printing
 ---
 
 Most "AI for 3D" tools are a nightmare for actual fabrication. They spew out messy, non-manifold `.glb` or `.obj` files that might look great in a render but immediately fail in your slicer or CAD environment. If you want a 5mm mounting hole changed to a 6mm hole, you have to reroll the entire prompt and pray. It's an unmaintainable black box [1].
