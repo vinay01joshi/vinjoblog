@@ -17,7 +17,7 @@ Create 3 folder with in the docker folder
 - webui   
  
 create `entrypoint.sh` file to bootstrap `ollama` server with in docker hence save this file on `/volume1/docker/ollama/enttrypoint` folder.
-```
+```bash
 #!/bin/bash
 
 # Starting server
@@ -42,7 +42,7 @@ wait
     
 
 ## Stack File
-```
+``` bash
 services:
   webui:
     container_name: OLLAMA-WEBUI
@@ -90,7 +90,7 @@ services:
 
 ## Resources
 [Ollama document](https://github.com/ollama/ollama/blob/main/docs/api.md) how you can call api endpoint .
-```
+```bash
 curl http://localhost:11434/api/generate -d '{
  "model": "llama3.2",
  "prompt": "Why is the sky blue?"

@@ -44,6 +44,7 @@
 // Main Posts Area
 .posts-main {
   width: 100%;
+  min-width: 0; // CRITICAL: Allows grid item to shrink below content width
 }
 
 // View Toggle Button
@@ -463,35 +464,34 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12px;
-  padding: 24px;
-  background: var(--card-bg, rgba(255, 255, 255, 0.02));
-  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.05));
-  border-radius: 16px;
+  gap: 16px;
+  padding: 12px 0;
+  background: none;
+  border: none;
+  border-radius: 0;
 
   a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
-    border-radius: 12px; // Creates the perfect rounded square
-    background: rgba(255, 255, 255, 0.06); 
+    width: 24px;
+    height: 24px;
+    background: none;
     color: var(--text-color);
     text-decoration: none;
     transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    border: none;
 
     svg {
       transition: transform 0.3s ease;
     }
 
     &:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: rgba(255, 255, 255, 0.2);
-      color: #ffffff;
+      background: none;
+      border: none;
+      color: var(--primary-color, #ff64c8);
       transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+      box-shadow: none;
 
       svg {
         transform: scale(1.1);
@@ -575,46 +575,88 @@
 
 
 // Tag Cloud Styling (Premium Unified)
-.tag-cloud .tag-cloud__item, .topic-tag, .category-tag {
-    padding: 8px 14px;
-    font-family: var(--font-family-poppins) !important;
-    font-size: 14px !important;
-    font-weight: 600 !important;
-    line-height: 1.3;
-    border-radius: 8px;
-    color: #ffffff !important;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    background: #475569; // Default color
-    border: none;
-    cursor: pointer;
+.topics-list,
+.post-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 4px;
+}
 
-    .tag-count {
-      opacity: 0.6;
-      font-size: 11px;
-      padding-left: 4px;
-      font-weight: 500;
-    }
+.tag-cloud .tag-cloud__item,
+.topic-tag,
+.category-tag {
+  padding: 8px 14px;
+  font-family: var(--font-family-poppins) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 1.3;
+  border-radius: 8px;
+  color: #ffffff !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #475569; // Default color
+  border: none;
+  cursor: pointer;
 
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-      filter: brightness(1.1);
-    }
+  .tag-count {
+    opacity: 0.6;
+    font-size: 11px;
+    padding-left: 4px;
+    font-weight: 500;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    filter: brightness(1.1);
+  }
 }
 
 // category/topic color mapping
-.tag-games, .tag-gaming { background: #ff4500 !important; }
-.tag-movies, .tag-entertainment { background: #ff1493 !important; }
-.tag-security, .tag-cybersecurity, .tag-arduino { background: #8a2be2 !important; }
-.tag-productivity, .tag-synology { background: #008080 !important; }
-.tag-linux, .tag-os { background: #708090 !important; }
-.tag-programming, .tag-code, .tag-dev { background: #4169e1 !important; }
-.tag-life, .tag-general { background: #32cd32 !important; }
-.tag-travel { background: #ffa500 !important; }
+.tag-games,
+.tag-gaming {
+  background: #ff4500 !important;
+}
+
+.tag-movies,
+.tag-entertainment {
+  background: #ff1493 !important;
+}
+
+.tag-security,
+.tag-cybersecurity,
+.tag-arduino {
+  background: #8a2be2 !important;
+}
+
+.tag-productivity,
+.tag-synology {
+  background: #008080 !important;
+}
+
+.tag-linux,
+.tag-os {
+  background: #708090 !important;
+}
+
+.tag-programming,
+.tag-code,
+.tag-dev {
+  background: #4169e1 !important;
+}
+
+.tag-life,
+.tag-general {
+  background: #32cd32 !important;
+}
+
+.tag-travel {
+  background: #ffa500 !important;
+}
 
 // ============ LATEST VIDEOS COMPONENT ============
 
@@ -637,7 +679,7 @@
 
   .videos-header {
     margin-bottom: 24px;
-    
+
     .section-title {
       margin: 0;
       font-size: 18px;
@@ -659,7 +701,7 @@
 
   .video-item {
     position: relative;
-    padding-left: 40px; 
+    padding-left: 0; // Removed unnecessary padding
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -668,16 +710,18 @@
 
   .video-number {
     position: absolute;
-    left: -20px;
-    top: 50px; 
+    left: -15%; // Pull it further left
+    top: 50px;
     transform: translateY(-50%);
-    font-size: 200px; // Massive numbers
-    font-weight: 900;
+    font-size: 180px; // Slightly smaller to fit better
+    font-weight: 800;
     line-height: 1;
-    color: rgba(255, 255, 255, 0.08); // Made more visible 
+    color: var(--text-color);
+    opacity: 0.1; // Using opacity on text-color for theme compatibility
     z-index: -1;
     pointer-events: none;
-    font-family: inherit;
+    font-family: var(--font-family-poppins, sans-serif);
+    user-select: none;
   }
 
   .video-thumbnail-wrapper {
@@ -685,7 +729,7 @@
     border-radius: 12px;
     overflow: hidden;
     aspect-ratio: 16 / 10;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 
     .video-thumbnail {
       width: 100%;
@@ -694,9 +738,17 @@
       transition: transform 0.4s ease;
 
       // Generative backgrounds for the dummy placeholders mapped roughly to screenshot hues
-      &.placeholder-1 { background: linear-gradient(135deg, #4f1d43, #151d5c); }
-      &.placeholder-2 { background: linear-gradient(135deg, #a4948c, #6d7b88); }
-      &.placeholder-3 { background: linear-gradient(135deg, #171833, #355171); }
+      &.placeholder-1 {
+        background: linear-gradient(135deg, #4f1d43, #151d5c);
+      }
+
+      &.placeholder-2 {
+        background: linear-gradient(135deg, #a4948c, #6d7b88);
+      }
+
+      &.placeholder-3 {
+        background: linear-gradient(135deg, #171833, #355171);
+      }
     }
 
     &:hover .video-thumbnail {
@@ -741,7 +793,9 @@
     color: var(--text-color);
     line-height: 1.5;
   }
-} // End .latest-videos
+}
+
+// End .latest-videos
 
 // Responsive
 @media (max-width: 768px) {
@@ -768,6 +822,7 @@
     @media (max-width: 900px) {
       grid-template-columns: 1fr 1fr;
     }
+
     @media (max-width: 600px) {
       grid-template-columns: 1fr;
     }
@@ -801,7 +856,7 @@
     .footer-socials {
       display: flex;
       gap: 12px;
-      
+
       a {
         display: flex;
         align-items: center;
@@ -843,11 +898,19 @@
       background-position: center;
       background-color: #1a1a2e;
       flex-shrink: 0;
-      
+
       // Fallback backgrounds
-      &.placeholder-1 { background: linear-gradient(135deg, #4f1d43, #151d5c); }
-      &.placeholder-2 { background: linear-gradient(135deg, #a4948c, #6d7b88); }
-      &.placeholder-3 { background: linear-gradient(135deg, #171833, #355171); }
+      &.placeholder-1 {
+        background: linear-gradient(135deg, #4f1d43, #151d5c);
+      }
+
+      &.placeholder-2 {
+        background: linear-gradient(135deg, #a4948c, #6d7b88);
+      }
+
+      &.placeholder-3 {
+        background: linear-gradient(135deg, #171833, #355171);
+      }
     }
 
     .footer-post-meta {
@@ -860,7 +923,7 @@
         font-size: 12px;
         font-weight: 700;
         line-height: 1.4;
-        
+
         a {
           color: var(--text-color);
           text-decoration: none;
@@ -882,7 +945,8 @@
     }
   }
 
-  .footer-menu, .footer-pages {
+  .footer-menu,
+  .footer-pages {
     ul {
       list-style: none;
       padding: 0;
@@ -958,6 +1022,7 @@
       font-size: 1.05rem; // Reduced from large default
       line-height: 1.75;
       color: var(--text-secondary, rgba(255, 255, 255, 0.8));
+      overflow-wrap: break-word; // Fix for long text overflow
 
       p {
         margin-bottom: 1.6rem;
@@ -982,6 +1047,33 @@
         margin: 2rem 0;
         max-width: 100%;
         height: auto;
+        display: block; // Prevents inline spacing issues
+      }
+
+      // Syntax Highlighting & Code Blocks
+      div.highlight,
+      div.highlighter-rouge,
+      pre,
+      code {
+        max-width: calc(100vw - 40px); // Fallback for very long lines
+
+        @media (min-width: 1024px) {
+          max-width: calc(100% - 2px); // Constraint within post area
+        }
+
+        overflow-x: auto;
+        white-space: pre; // Ensure code stays formatted
+        word-wrap: normal;
+        background: var(--syntax-highlighting-background, rgba(0, 0, 0, 0.2));
+        border-radius: 8px;
+        position: relative;
+      }
+
+      // Special case for inline code vs block code
+      code:not(pre code) {
+        white-space: normal;
+        word-break: break-word;
+        padding: 0.2rem 0.4rem;
       }
 
       blockquote {
@@ -1007,5 +1099,3 @@
     margin-bottom: 24px;
   }
 }
-
-

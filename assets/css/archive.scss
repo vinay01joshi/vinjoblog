@@ -1,0 +1,145 @@
+.archive-page-v2 {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1rem;
+  color: var(--text-color);
+  font-family: var(--font-family-poppins);
+
+  .main-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    letter-spacing: -2px;
+    color: var(--heading-font-color);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .year-section {
+    margin-bottom: 4rem;
+  }
+
+  .year-title {
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    color: var(--heading-font-color);
+  }
+
+  .sup-count {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-alt-color);
+    opacity: 0.5;
+    margin-top: 0.5rem;
+  }
+
+  .month-group {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+
+    @media (max-width: 850px) {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+
+  .month-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--heading-font-color);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.3rem;
+    position: sticky;
+    top: 100px;
+  }
+
+  .month-posts {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .archive-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+    gap: 2rem;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      .entry-title a {
+        color: var(--primary-color);
+      }
+    }
+  }
+
+  .entry-title {
+    flex: 1;
+    
+    a {
+      color: var(--text-color);
+      font-size: 1.15rem;
+      font-weight: 600;
+      line-height: 1.4;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+  }
+
+  .entry-meta {
+    display: flex;
+    align-items: flex-end;
+    gap: 1.5rem;
+    min-width: 200px;
+    white-space: nowrap;
+    font-family: var(--font-family-mono);
+  }
+
+  .entry-date {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-alt-color);
+    letter-spacing: 0.03em;
+  }
+
+  .entry-read {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-alt-color);
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 850px) {
+    .archive-entry {
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: flex-start;
+      padding: 1.5rem 0;
+    }
+
+    .entry-meta {
+      width: 100%;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    
+    .month-title {
+      position: static;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
